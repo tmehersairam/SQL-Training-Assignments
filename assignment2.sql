@@ -16,10 +16,7 @@ create table tblDPT(
 	loc varchar(40)
 )
 
---UPDATE TBLDPT SET DNAME = 'ACCOUNTING', LOC = 'NEW YORK' WHERE DEPTNO =10;
---UPDATE TBLDPT SET DNAME = 'RESEARCH', LOC = 'DALLAS' WHERE DEPTNO =20;
---UPDATE TBLDPT SET DNAME = 'SALES', LOC = 'CHICAGO' WHERE DEPTNO =30;
---UPDATE TBLDPT SET DNAME = 'OPERATIONS', LOC = 'BOSTON' WHERE DEPTNO =40;
+
 INSERT INTO tblDPT(Deptno,Dname,Loc) VALUES (10,'ACCOUNTING','NEW YORK');
 INSERT INTO tblDPT(Deptno,Dname,Loc) VALUES (20,'RESEARCH','DALLAS');
 INSERT INTO tblDPT(Deptno,Dname,Loc) VALUES (30,'SALES','CHICAGO');
@@ -50,34 +47,50 @@ select * from tblEMP;
 
 
 
---ASSIGNMENT PART 1
+--ASSIGNMENT SET 1
+
+-- 1.
 select ename from tblEMP where ename like 'A%';
 
+-- 2.
 select * from tblEMP where mgr_id is NULL;
 
+-- 3.
 select ename, empno, salary from tblEMP where salary between 1200 and 1400;
 
+-- 4.
 select ename, salary from tblEMP e join tblDPT d on  e.deptno = d.deptno where dname = 'RESEARCH';
 update tblEMP set salary = ( salary + salary * 0.1) where deptno = (select deptno from tblDPT where dname = 'RESEARCH');
 
+
+-- 5.
 select count(*) 'NUMBER OF CLERKS' from tblEMP where job = 'CLERK';
 
+
+--6.
 select avg(salary) 'AVERAGE SALARY', count(empno) 'NUMBER OF EMPLOYEES' from tblEMP group by job;
 
+--7.
 select ename from tblEMP where salary = (select  min(salary) from tblEMP);
-
 select ename from tblEMP where salary = (select  max(salary) from tblEMP);
 
+--8.
 select * from tblDPT d where not exists (select * from tblEMP e where e.deptno = d.deptno );
 
+--9.
 select ename, salary from tblEMP  where job = 'ANALYST' and salary > 1200 and deptno = 20 order by ename desc; 
 
+-- 10.
 select d.dname, d.deptno, sum(salary) 'total salary of all employees' from tblEMP e join tblDPT d on e.deptno = d.deptno group by d.dname, d.deptno;
 
+--11.
 select salary from tblEMP where ename IN( 'MILLER', 'SMITH');
 
+--12.
 select ename from tblEMP where ename like '[AM]%';
 
+--13.
 select ( salary * 12 ) as 'YEARLY SALARY OF SMITH ' from tblEMP where ename = 'SMITH';
 
+--14.
 select ename, salary  from tblEMP where salary not between  1500 and 2850;

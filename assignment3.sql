@@ -2,7 +2,7 @@
 select * from tblDPT;
 select * from tblEMP;
 
--- ASSIGNMENT PART 2
+-- ASSIGNMENT SET 2
 
 
 
