@@ -4,8 +4,6 @@ select * from tblEMP;
 
 -- ASSIGNMENT SET 2
 
-
-
 -- 1. Retrieve a list of MANAGERS. 
 select * from tblEMP where job='MANAGER';
 
